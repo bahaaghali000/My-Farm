@@ -1,0 +1,91 @@
+<section
+  class="hero"
+  aria-roledescription="carousel"
+  aria-label="عروض مميزة"
+  (mouseenter)="setPaused(true)"
+  (mouseleave)="setPaused(false)"
+  (focusin)="setPaused(true)"
+  (focusout)="setPaused(false)"
+>
+  <div class="hero__viewport" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+    @for (slide of slides; track slide.id; let index = $index) {
+      <div
+        class="hero__page"
+        [class.hero__page--active]="index === activeIndex()"
+        [attr.aria-hidden]="index === activeIndex() ? null : true"
+        [attr.inert]="index === activeIndex() ? null : true"
+      >
+        <img
+          class="hero__media"
+          [src]="slide.imageUrl"
+          alt=""
+          aria-hidden="true"
+          [attr.fetchpriority]="index === 0 ? 'high' : null"
+          draggable="false"
+        />
+
+        <div class="hero__overlay">
+          <div class="hero__content">
+            <span class="hero__badge" lang="ar">{{ slide.badge }}</span>
+            <h1 class="hero__title" lang="ar">
+              {{ slide.titleTop }}<br />
+              <span class="hero__title-accent">{{ slide.titleAccent }}</span>
+            </h1>
+            <p class="hero__subtitle" lang="ar">{{ slide.subtitle }}</p>
+            <div class="hero__cta-row d-flex flex-wrap">
+              <button
+                type="button"
+                class="hero__btn hero__btn--primary"
+                (click)="primaryClicked.emit(slide)"
+              >
+                <span lang="ar">{{ slide.primaryLabel }}</span>
+              </button>
+              <button
+                type="button"
+                class="hero__btn hero__btn--ghost"
+                (click)="secondaryClicked.emit(slide)"
+              >
+                <span lang="ar">{{ slide.secondaryLabel }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (slides.length > 1) {
+      <button
+        type="button"
+        class="hero__arrow hero__arrow--prev"
+        aria-label="الشريحة السابقة"
+        (click)="previous()"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      </button>
+      <button
+        type="button"
+        class="hero__arrow hero__arrow--next"
+        aria-label="الشريحة التالية"
+        (click)="next()"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+      </button>
+    }
+
+    <div class="hero__indicators" role="group" aria-label="اختر الشريحة">
+      @for (index of slideIndexes(); track index) {
+        <button
+          type="button"
+          class="hero__indicator"
+          [class.hero__indicator--active]="index === activeIndex()"
+          [attr.aria-label]="'انتقل إلى الشريحة ' + (index + 1)"
+          [attr.aria-current]="index === activeIndex() ? true : null"
+          (click)="goTo(index)"
+        ></button>
+      }
+    </div>
+    <p class="visually-hidden" aria-live="polite">
+      الشريحة {{ activeIndex() + 1 }} من {{ slides.length }}
+    </p>
+  </div>
+</section>
