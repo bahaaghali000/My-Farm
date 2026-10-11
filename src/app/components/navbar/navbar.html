@@ -1,0 +1,77 @@
+<header class="navbar-shell sticky-top shadow-sm">
+  <nav
+    class="navbar-shell__bar d-flex flex-wrap justify-content-between align-items-center w-100"
+    aria-label="التنقل الرئيسي"
+  >
+    <a
+      class="navbar-shell__logo d-flex align-items-center gap-2"
+      aria-label="مزرعتي - الصفحة الرئيسية"
+      routerLink="/"
+    >
+      <span class="navbar-shell__wordmark" lang="ar">مزرعتي</span>
+      <span class="material-symbols-outlined navbar-shell__logo-icon" aria-hidden="true">pets</span>
+    </a>
+
+    <form class="navbar-shell__search" role="search">
+      <label class="visually-hidden" for="navbar-search">ابحث عن منتجات الحيوانات</label>
+      <input
+        id="navbar-search"
+        class="navbar-shell__search-input"
+        type="search"
+        autocomplete="off"
+        placeholder="ابحث عن منتجات الحيوانات..."
+        name="searchQuery"
+        [(ngModel)]="searchQuery"
+      />
+      <span class="material-symbols-outlined navbar-shell__search-icon" aria-hidden="true"
+        >search</span
+      >
+    </form>
+
+    <div class="navbar-shell__actions d-flex align-items-center">
+      <button type="button" class="navbar-shell__action d-flex flex-column align-items-center">
+        <span class="material-symbols-outlined" aria-hidden="true">account_circle</span>
+        <span class="navbar-shell__action-label" lang="ar">حسابي</span>
+      </button>
+
+      <button type="button" class="navbar-shell__action d-flex flex-column align-items-center">
+        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+        <span class="navbar-shell__action-label" lang="ar">المفضلة</span>
+
+        @if (wishlistCount > 0) {
+          <span class="navbar-shell__badge navbar-shell__badge--amber" aria-hidden="true">
+            {{ wishlistCount }}
+          </span>
+          <span class="visually-hidden">{{ wishlistCount }} في المفضلة</span>
+        }
+      </button>
+
+      <button type="button" class="navbar-shell__action d-flex flex-column align-items-center">
+        <span class="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
+        <span class="navbar-shell__action-label" lang="ar">السلة</span>
+
+        @if (cartCount > 0) {
+          <span class="navbar-shell__badge navbar-shell__badge--primary" aria-hidden="true">
+            {{ cartCount }}
+          </span>
+          <span class="visually-hidden">{{ cartCount }} في السلة</span>
+        }
+      </button>
+    </div>
+  </nav>
+
+  <nav class="navbar-shell__categories" aria-label="تصنيفات المنتجات">
+    <div class="navbar-shell__categories-inner d-flex">
+      @for (cat of categories; track cat.id) {
+        <a
+          class="navbar-shell__category"
+          [routerLink]="['/category', cat.id]"
+          routerLinkActive="navbar-shell__category--active"
+          ariaCurrentWhenActive="page"
+        >
+          <span lang="ar">{{ cat.name }}</span>
+        </a>
+      }
+    </div>
+  </nav>
+</header>

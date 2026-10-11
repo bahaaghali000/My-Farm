@@ -5,7 +5,8 @@
   --teriary-color: #27AE60;
   --neutral-color: #1A1A2E;
 
-  /* Text, icons and borders that sit on the primary colour */
+  --secondary-dark: #855400;
+
   --color-on-primary: #FFFFFF;
   --color-on-primary-rgb: 255 255 255;
 }

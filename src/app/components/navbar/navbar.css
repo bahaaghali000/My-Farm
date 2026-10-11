@@ -1,0 +1,224 @@
+.navbar-shell {
+  background-color: rgb(255 255 255 / 0.8);
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+}
+
+.navbar-shell__bar {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  column-gap: 1rem;
+  row-gap: 0.75rem;
+}
+
+.navbar-shell__logo {
+  flex: none;
+  text-decoration: none;
+}
+
+.navbar-shell__wordmark {
+  font-size: 1.875rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--primary-color);
+}
+
+.navbar-shell__logo-icon {
+  font-size: 1.875rem;
+  color: var(--secondary-color);
+}
+
+.navbar-shell__search {
+  --navbar-search-bg: #f4f3fa;
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 42rem;
+  margin-inline: 3rem;
+}
+
+.navbar-shell__search-input {
+  width: 100%;
+  padding-block: 0.75rem;
+  padding-inline: 1rem 3rem;
+  border: none;
+  border-radius: var(--bs-border-radius-xl);
+  background-color: var(--navbar-search-bg);
+  color: var(--neutral-color);
+  font: inherit;
+}
+
+.navbar-shell__search-input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.navbar-shell__search-input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.navbar-shell__search-icon {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 50%;
+  translate: 0 -50%;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: color 150ms ease;
+}
+
+.navbar-shell__search:focus-within .navbar-shell__search-icon {
+  color: var(--primary-color);
+}
+
+.navbar-shell__actions {
+  flex: none;
+  gap: 1.5rem;
+  color: #475569;
+}
+
+.navbar-shell__action {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.navbar-shell__action:hover {
+  color: var(--primary-color);
+}
+
+.navbar-shell__action:active {
+  transform: scale(0.9);
+}
+
+.navbar-shell__action:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: var(--bs-border-radius-sm);
+}
+
+.navbar-shell__action-label {
+  margin-top: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.navbar-shell__badge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1rem;
+  height: 1rem;
+  padding-inline: 0.25rem;
+  border-radius: 999px;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.navbar-shell__badge--primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.navbar-shell__badge--amber {
+  background-color: var(--secondary-dark);
+  color: #fff;
+}
+
+.navbar-shell__categories {
+  background-color: #fff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.navbar-shell__categories-inner {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
+  gap: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navbar-shell__categories-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-shell__category {
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.navbar-shell__category:hover {
+  color: var(--secondary-color);
+}
+
+.navbar-shell__category:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: var(--bs-border-radius-sm);
+}
+
+.navbar-shell__category--active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.navbar-shell__category--highlight {
+  color: var(--secondary-dark);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-shell__action,
+  .navbar-shell__search-icon,
+  .navbar-shell__category {
+    transition: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-shell__search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar-shell__bar,
+  .navbar-shell__categories-inner {
+    padding-inline: 1rem;
+  }
+
+  .navbar-shell__actions {
+    gap: 1rem;
+  }
+
+  .navbar-shell__categories-inner {
+    gap: 1.25rem;
+  }
+}
