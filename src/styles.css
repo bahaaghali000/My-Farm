@@ -1,6 +1,15 @@
 :root {
+  /* Brand palette */
   --primary-color: #0D7377;
   --secondary-color: #F4A636;
   --teriary-color: #27AE60;
   --neutral-color: #1A1A2E;
+
+  /* Text, icons and borders that sit on the primary colour */
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-rgb: 255 255 255;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
 }

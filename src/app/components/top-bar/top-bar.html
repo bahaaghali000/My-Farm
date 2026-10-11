@@ -1,0 +1,22 @@
+<div class="top-bar d-flex flex-wrap justify-content-between align-items-center">
+  <div class="d-flex align-items-center gap-4">
+    <select
+      class="top-bar__action top-bar__select"
+      aria-label="Select currency"
+      (change)="changeCurrency($any($event.target).value)"
+      [value]="(currency$ | async)?.currency"
+    >
+      <option value="egp">(ج.م) مصر</option>
+      <option value="sar" lang="ar">(ر.س) السعودية</option>
+      <option value="aed" lang="ar">(درهم) الإمارات</option>
+      <option value="kwd" lang="ar">(د.ك) الكويت</option>
+      <option value="usd" lang="ar">($) الولايات المتحدة</option>
+    </select>
+  </div>
+
+  <div class="d-flex align-items-center gap-4">
+    <span lang="ar">توصيل مجاني للطلبات فوق 200 ر.س</span>
+    <span class="top-bar__divider" aria-hidden="true"></span>
+    <a class="top-bar__link" routerLink="/track-order" lang="ar">تتبع طلبك</a>
+  </div>
+</div>

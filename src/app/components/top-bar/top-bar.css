@@ -1,0 +1,159 @@
+.top-bar {
+  padding-block: 0.375rem;
+  padding-inline: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-on-primary);
+  background-color: var(--primary-color);
+  column-gap: 1.5rem;
+  row-gap: 0.25rem;
+}
+
+/* Interactive controls (shared reset for trigger-style elements) */
+
+.top-bar__action {
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: var(--bs-border-radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity 150ms ease-in-out;
+}
+
+.top-bar__action:hover {
+  opacity: 0.8;
+}
+
+.top-bar__select {
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-opacity='.72' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --chevron-active: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  min-width: 9.75rem;
+  max-width: 12rem;
+  padding-block: 0.45rem;
+  /* Trailing space clears the chevron; logical properties keep RTL correct */
+  padding-inline: 0.875rem 2rem;
+  border: 1px solid rgb(var(--color-on-primary-rgb) / 0.22);
+  border-radius: 999px;
+  background-color: rgb(var(--color-on-primary-rgb) / 0.12);
+  background-image: var(--chevron);
+  background-repeat: no-repeat;
+  background-size: 0.9rem;
+  background-position: right 0.85rem center; /* LTR; flipped below for RTL */
+  /* Forces the native popup onto a light, readable surface */
+  color-scheme: light;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 0.35rem 0.9rem rgb(0 0 0 / 0.08);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.top-bar__select:hover {
+  background-color: rgb(var(--color-on-primary-rgb) / 0.18);
+  border-color: rgb(var(--color-on-primary-rgb) / 0.34);
+  background-image: var(--chevron-active);
+  transform: translateY(-1px);
+  box-shadow: 0 0.45rem 1rem rgb(0 0 0 / 0.12);
+}
+
+.top-bar__select:active {
+  background-color: rgb(var(--color-on-primary-rgb) / 0.24);
+  transform: translateY(0);
+}
+
+/* The chevron belongs on the inline-end side, and this app runs RTL */
+:dir(rtl) .top-bar__select {
+  background-position: left 0.5rem center;
+}
+
+/* Native dropdowns inherit the trigger's colours in some browsers,
+   so pin the popup to a high-contrast light surface. */
+.top-bar__select option {
+  background-color: #fff;
+  color: var(--neutral-color);
+}
+
+/* Material Symbols sized against the bar's text scale */
+
+.top-bar .material-symbols-outlined {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.top-bar .top-bar__icon--sm {
+  font-size: 0.75rem;
+}
+
+/* Country flag */
+
+.top-bar__flag {
+  flex: none;
+  width: 1rem;
+  height: 0.75rem;
+  border-radius: var(--bs-border-radius-sm);
+  object-fit: cover;
+}
+
+/* Divider between the promo text and the tracking link */
+
+.top-bar__divider {
+  width: 1px;
+  height: 0.75rem;
+  background-color: rgb(var(--color-on-primary-rgb) / 0.2);
+}
+
+/* Order tracking link */
+
+.top-bar__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-bar__link:hover {
+  text-decoration: underline;
+}
+
+/* Keyboard focus ring (WCAG 2.2 focus visibility) */
+
+.top-bar__action:focus-visible,
+.top-bar__link:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: var(--bs-border-radius-sm);
+}
+
+/* Keyboard focus brightens the currency selector's chevron too */
+.top-bar__select:focus-visible {
+  background-image: var(--chevron-active);
+  box-shadow:
+    0 0.45rem 1rem rgb(0 0 0 / 0.12),
+    0 0 0 0.14rem rgb(var(--secondary-color-rgb) / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-bar__action,
+  .top-bar__select {
+    transition: none;
+  }
+}
+
+/* Small screens: tighter gutters, the two groups stack instead of overflowing */
+
+@media (max-width: 575.98px) {
+  .top-bar {
+    padding-inline: 1rem;
+  }
+}
